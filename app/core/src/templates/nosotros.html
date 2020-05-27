@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block nosotros %}
+    {% load static %}
+
+    <!-- <h2>{{Titulos}}</h2>
+    <h2><span>{{descripcion}}</span></h2> -->
+
+	<!-- Modal -->
+	
+    <!-- LOADER -->
+	<div id="preloader">
+		<div class="loader-container">
+			<div class="progress-br float shadow">
+				<div class="progress__item"></div>
+			</div>
+		</div>
+	</div>
+	<!-- END LOADER -->	
+
+    <!-- Start header -->
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="index.html">
+					<img src="{% static 'assets/images/logo-1.jpg'% }" alt="" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-host">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+						<li class="nav-item active"><a class="nav-link" href="about.html">Sobre nosotros</a></li>
+						<li class="nav-item"><a class="nav-link" href="features.html">Caracteristicas </a></li>
+					
+						
+						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+					</ul>
+					
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- End header -->
+	
+	<div class="all-title-box">
+		<div class="container text-center">
+                    <h1 style="color: #05747B">Quienes somos <br><span class="m_1 " >{{title_1 }}</span></h1>
+		</div>
+	</div>
+	
+    
+            <div id="testimonials" class="parallax section db parallax-off" style="background-image:url('{% static 'assets/images/parallax_04.jpg'% }');">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>EQUIPO DE TRABAJO</h3>
+                <p>Estos son los integrantes del equipo de trabajo encargados del desarrollo de la aplicativo</p>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="testi-carousel owl-carousel owl-theme">
+                        <div class="testimonial clearfix">
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i>Encargado del soporte tecnico</h3>
+                                <p class="lead">Soy una persona con buena pasiencia y trato de entender las necesidades de mi equipo de trabajo...</p>
+                            </div>
+                            <div class="testi-meta">
+                                <img src="{% static 'assets/images/seegio.jpeg' %}" alt="" class="img-fluid">
+                                <h4>Sergio David</h4>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+
+                        <div class="testimonial clearfix">
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
+                                <p class="lead">ayudo mis compañeros con cualquier cosa que necesiten.</p>
+                            </div>
+                            <div class="testi-meta">
+                                <img src="{% static 'assets/images/camilo.jpg' %}" alt="" class="img-fluid">
+                                <h4>Camilo Guzman </h4>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+
+                        <div class="testimonial clearfix">
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Don asertivo !</h3>
+                                <p class="lead">Suelo ser la persona que da la cara y negocia los terminos.</p>
+                            </div>
+                            <div class="testi-meta">
+                                <img src="{% static 'assets/images/cristhian.jpg' %}" alt="" class="" height="100" width="300">
+                                <h4>Cristhian Julian Portilla Delgado </h4>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+                        <div class="testimonial clearfix">
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Encargado de la documentacion</h3>
+                                <p class="lead">soy una persona comprometida que aun hace parte de la documentacion importante del proyecto</p>
+                            </div>
+                            <div class="testi-meta">
+                                <img src="{% static 'assets/images/daniel.jpg' %}" alt="" class="img-fluid">
+                                <h4>Daniel fernando carvajal</h4>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+
+                       
+
+                 
+                    </div><!-- end carousel -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+<!-- ALL JS FILES -->
+<a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+{% endblock %}
+
+

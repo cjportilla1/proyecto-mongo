@@ -1,0 +1,1 @@
+mongodb+srv://admin:<password>@proyecto-gn6ul.mongodb.net/test?retryWrites=true&w=majority
