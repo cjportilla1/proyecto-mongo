@@ -25,3 +25,12 @@ class nosotrosPageView(TemplateView):
         return render(request, self.template_name,{'Titulos':'Acerca de nosotros','descripcion':'Somos asi','title_1':'Somos un equipo de trabajo conformado por personas comprometidas pero alegres que desea ver esteproyecto volverse en realidad'})
 
  
+
+class contactenosPageView(TemplateView):
+
+    template_name = "contactenos.html"
+
+    def get(self,request,*args,**Rwargs):
+        return render(request, self.template_name,{'Titulos':'Acerca de nosotros','descripcion':'Somos asi','title_1':'Somos un equipo de trabajo conformado por personas comprometidas pero alegres que desea ver esteproyecto volverse en realidad'})
+
+ 

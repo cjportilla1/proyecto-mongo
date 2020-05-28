@@ -3,7 +3,9 @@
 	<!-- Modal -->
 {%extends 'base.html'%}
 
-{%block contenido_contactenos%}		
+{%block contenido_contactenos%}	
+
+{%load static%}	
 
 	<!-- LOADER -->
 	<div id="preloader">
@@ -43,24 +45,25 @@
 	
 	<div class="all-title-box">
 		<div class="container text-center">
-			<h1 style="color: #05747B">Contactenos<span class="m_1">algunos canales de comunicacion que tenemos disponibles.</span></h1>
+			<h1 style="color: #05747B">Contactenos<span class="m_1 font-weight-bolder">algunos canales de comunicacion que tenemos disponibles.</span></h1>
 		</div>
 	</div>
 	
     <div class="col-sm-12">
         <section class="row bg-dark">
             <div class="col-md-5 mt-4">
-                <h3 class="text light">Nuestras redes sociales:</h3>
+                <h3 class="text-warning">Nuestras redes sociales:</h3>
                 <div class="d-flex">
-                    <a class="nav-link" href="facebook.com">Facebook</a>
-                    <a class="nav-link" href="linkedin.com">Linkedin</a>
+                    <a class="nav-link text-primary" href="facebook.com">Facebook</a>
+                    <a class="nav-link text-light" href="linkedin.com">Linkedin</a>
                 </div>
 
                 <div class="col-md-12">
                     <form action="">
-                        <div class="form-control">
-                            <label for="">Tipo de petición</label>
-                            <select> class="form-control">
+                        <div class="form-group ">
+                           <label for="" class="text-light">Tipo de petición</label>
+                            <select class="form-control">
+
                                 <option value="">Seleccione un opción</option>
                                 <option value="">Peticion</option>
                                 <option value="">Queja</option>
@@ -68,26 +71,36 @@
                                 <option value="">Solicitud</option>
                                 <option value="">Felicitación</option>
                             </select>
+                             
                         </div>
                         
-                        <div class="form-control">
+                        <div class="form-group  text-light">
                             <label for="">Tu Nombre</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" placeholder=" su pinche nombre ya me dio rabia">
                         </div>
                         
-                        <div class="form-control">
+                        <div class="form-group text-light">
                             <label for="">Correo electronico</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" placeholder="ejemplo@mail.com">
                         </div>
                         
-                        <div class="form-control">
-                            <label for=""></label>
-                        </div>  
-                        
-                    </form>
-                    
+                        <div class="form-group text-light">
+                            <label for="">Mensaje</label>
+                            <textarea name="" id="" rows="5" class="form-control"> </textarea>
+                        </div>
 
+                        <div class="form-group text-light">
+                        <button class="btn btn-success">Enviar</button>
+                        </div>
+                    </form>
                 </div>
+            </div>
+            <div class="col-md-7 mt-4">
+                <h3 class="text-light">Nuestra ubicación:</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.7193384980415!2d-75.56967914092368!3d6.30056155840395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442f25d6670d4d%3A0x8043999e5e767b96!2sSENA%20DE%20PEDREGAL!5e0!3m2!1sen!2sco!4v1590629043481!5m2!1sen!2sco" width="90%" height="85%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </section>
+    </div>
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -144,7 +157,7 @@
         </div><!-- end container -->
     </div><!-- end copyrights -->
 
-    
+    {% endblock %}
 
     <!-- ALL JS FILES -->
   
