@@ -1,7 +1,7 @@
 
 # Create your views here.
 
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 from django.views.generic.base import TemplateView
 
 # Create your views here.
@@ -26,11 +26,5 @@ class nosotrosPageView(TemplateView):
 
  
 
-class contactenosPageView(TemplateView):
-
-    template_name = "contactenos.html"
-
-    def get(self,request,*args,**Rwargs):
-        return render(request, self.template_name,{'Titulos':'Acerca de nosotros','descripcion':'Somos asi','title_1':'Somos un equipo de trabajo conformado por personas comprometidas pero alegres que desea ver esteproyecto volverse en realidad'})
-
- 
+def contacto(request):
+	return render(request,'contactenos.html')
