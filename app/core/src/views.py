@@ -3,7 +3,7 @@
 
 from django.shortcuts import render,HttpResponse
 from django.views.generic.base import TemplateView
-from . import forms
+from .forms import ContactForm
 # Create your views here.
 
 
@@ -24,7 +24,8 @@ class nosotrosPageView(TemplateView):
     def get(self,request,*args,**Rwargs):
         return render(request, self.template_name,{'Titulos':'Acerca de nosotros','descripcion':'Somos asi','title_1':'Somos un equipo de trabajo conformado por personas comprometidas pero alegres que desea ver esteproyecto volverse en realidad'})
 
- 
+
 
 def contacto(request):
-	return render(request,'contactenos.html')
+	formContact=ContactForm()
+	return render(request,'contactenos.html', {'formulario':formContact}) 
