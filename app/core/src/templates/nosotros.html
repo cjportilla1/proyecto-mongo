@@ -23,7 +23,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html">
-					<img src="{% static 'assets/images/logo-1.jpg'% }" alt="" />
+					<img src="{% static 'assets/images/logo-1.jpg' %}" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -32,12 +32,12 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-						<li class="nav-item active"><a class="nav-link" href="about.html">Sobre nosotros</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+						<li class="nav-item active"><a class="nav-link" href="{% url 'nosotros' %}">Sobre nosotros</a></li>
 						<li class="nav-item"><a class="nav-link" href="features.html">Caracteristicas </a></li>
 					
 						
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contact</a></li>
 					</ul>
 					
 				</div>
@@ -53,7 +53,7 @@
 	</div>
 	
     
-            <div id="testimonials" class="parallax section db parallax-off" style="background-image:url('{% static 'assets/images/parallax_04.jpg'% }');">
+            <div id="testimonials" class="parallax section db parallax-off" style="background-image:url('{% static 'assets/images/parallax_04.jpg' %}');">
         <div class="container">
             <div class="section-title text-center">
                 <h3>EQUIPO DE TRABAJO</h3>
