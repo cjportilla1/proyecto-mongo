@@ -1,8 +1,9 @@
 
 # Create your views here.
 
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse, redirect
 from django.views.generic.base import TemplateView
+from django.urls import reverse
 from .forms import ContactForm
 # Create your views here.
 
@@ -28,4 +29,21 @@ class nosotrosPageView(TemplateView):
 
 def contacto(request):
 	formContact=ContactForm()
+
+	if request.method=="POST":
+
+		formContact=(ContactForm(data=request.POST))
+		if formContact.is_valid():
+
+			tipomsj= request.POST.get('tipomsj','')
+			usuario= request.POST.get('usuario','')
+			correo= request.POST.get('correo','')
+			mensaje= request.POST.get('mensaje','')
+
+
+		#enviar mensaje o email:
+			return redirect(reverse('contacto')+"?ok")
+
+
+
 	return render(request,'contactenos.html', {'formulario':formContact}) 
