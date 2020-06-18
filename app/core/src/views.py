@@ -6,6 +6,8 @@ from django.views.generic.base import TemplateView
 from django.urls import reverse
 from .forms import ContactForm
 from django.core.mail import EmailMessage
+
+
 # Create your views here.
 
 
@@ -15,16 +17,6 @@ class HomePageView(TemplateView):
 
     def get(self,request,*args,**Rwargs):
         return render(request, self.template_name,{'TituliloIni':'los saluda Sergio','titulo2':'clases de python'})
-
-
-
-
-class nosotrosPageView(TemplateView):
-
-    template_name = "nosotros.html"
-
-    def get(self,request,*args,**Rwargs):
-        return render(request, self.template_name,{'Titulos':'Acerca de nosotros','descripcion':'Somos asi','title_1':'Somos un equipo de trabajo conformado por personas comprometidas pero alegres que desea ver este  proyecto volverse en realidad'})
 
 
 
@@ -59,3 +51,4 @@ def contacto(request):
                 return redirect(reverse('contacto')+"?fail")
 
     return render(request,'contactenos.html',{'formulario':formContact})
+
