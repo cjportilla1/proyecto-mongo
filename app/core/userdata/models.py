@@ -1,100 +1,78 @@
 from django.db import models
 from django.conf import settings
 from ckeditor.fields import RichTextField
-from .generos import Generos
-
-# Create your models here.
+from .genero import Generos
 
 
+# Create your models here. 
+#crear la estructura de la aplicacion en el  modelo de datos:
 
-#modelo de la tabla roles:
 class Roles(models.Model):
-	RoleName = models.CharField(max_length = 50)
+    RoleName = models.CharField(max_length = 50)
+    
+    class Meta:
+        verbose_name = "Roles de usuario"
+        verbose_name_plural = "perfiles"
 
-
-#poner nombres meta a cada clase
-	class Meta:
-		verbose_name:"perfil de usuario"
-		verbose_name_plural="perfiles"
-
-
-	#se crea la funcion para llamar atributos
-	def _str_(self):
-		return self.RoleName
-
-
-	#crear los demas modelos para la aplicacion datos user:
-	#modelo de la tabla DatosUser
+    
+    #creo la funcion para llamar atributo:
+    def __str__(self):
+        return self.RoleName
+    
+    
 class DatosUser(models.Model):
-	userDNI = models.CharField(max_length=20 , verbose_name="Numero Id")
-	fotoUser = models.ImageField(default='user.png' , verbose_name="Foto de perfil",upload_to='img/perfiles')
-	teleUser = models.CharField(max_length=20 , verbose_name="Telefono")
-	nombUser = models.CharField(max_length=256 , null=True , verbose_name="Nombres")
-	apelUser = models.CharField(max_length=256 , null=True,verbose_name="Apellidos")
-	profUser= models.CharField(max_length=100 , null=True,verbose_name="Profesion")
-	geneUser = models.CharField(max_length=20 , choices=Generos , default="Otro" , verbose_name="Genero")
-	adddata = models.DateTimeField(auto_now_add = True , null=True)
-	modifyat = models.DateTimeField(auto_now_add = True , null=True)
+    userDNI = models.CharField(max_length = 20, verbose_name= "Identificacion")
+    NombUser = models.CharField(max_length = 255, null=True, verbose_name= "Nombres")
+    ApeUser = models.CharField(max_length = 255, null=True, verbose_name= "Apellidos")
+    ProfeUser = models.CharField(max_length = 70, null=True, verbose_name= "Profesion")
+    fotoUser = models.ImageField(default='user.png', verbose_name = "Foto de perfil", upload_to="images/perfiles")
+    teleUser = models.CharField(max_length = 20, verbose_name= "Numero de Telefono")
+    GeneUser = models.CharField(max_length = 20, null=True, choices = Generos, default = "Otro", verbose_name= "Genero")
+    creado = models.DateTimeField(auto_now_add = True, null=True, verbose_name= "Creado el")
+    modificado = models.DateTimeField(auto_now_add = True, null=True, verbose_name= "Modificado el")
+    
+    class Meta:
+        verbose_name = "Datos del usuario"
+        verbose_name_plural = "Informacion"   
+         
+    def __unicode__(self):
+        return self.userDNI
 
+class Habilidades(models.Model):
+    NombHabil = models.CharField(max_length = 155, verbose_name= "Competencia")
+    DescHabil = models.TextField(verbose_name= "Descripcion de la habilidad" )
+    prof = models.CharField(max_length = 200, null= True, verbose_name = "Profesion")
+    class Meta:
+        verbose_name = "Habilidades de usuario"
+        verbose_name_plural = "Competencias"
+    
+    def __str__(self):
+        return self.NombHabil
 
-
-#nombres meta a cada clase
-	class Meta:
-		verbose_name:"Datos de usuario"
-		verbose_name_plural:"Informacion"
-
-	#funcion de seleccion:
-	def _str_(self):
-		return self.userDNI
-
-
-#modelo de la tabla habilidades:
-class HabilUser(models.Model):
-	NombHabil = models.CharField(max_length = 100,verbose_name="Habilidad")
-	DescHabil = models.TextField(max_length = 2000,verbose_name="Descripcion de la habilidad")
-
-#nombres meta de la clase
-	class Meta:
-		verbose_name:"Habilidades de usuario"
-		verbose_name_plural:"Competencias"
-
-	#funcion de la seleccion
-	def _str_(self):
-		return self.NombHabil
-
-
-#agregamos los modelos de detalle:
 class DetaRoles(models.Model):
-	idRole=models.ForeignKey(Roles, on_delete = models.CASCADE,verbose_name="identificador de rol")
-	idUser=models.ForeignKey(DatosUser,on_delete=models.CASCADE)
-	addUser=models.DateTimeField(auto_now_add=True,auto_now=False)
-	udtuser=models.CharField(max_length=10)
+    idRole = models.ForeignKey(Roles, on_delete = models.CASCADE, verbose_name = "Identificador de Rol")
+    idUser = models.ForeignKey(DatosUser, on_delete = models.CASCADE)
+    addUser = models.DateTimeField(auto_now_add = True, null=True)
+    udtUser = models.DateTimeField(auto_now = True)
+    estaRol = models.CharField(max_length = 10)
+    
+    class Meta:
+        verbose_name = "Roles de usuario"
+        verbose_name_plural = "Roles"
+        
+    def __unicode__(self):
+        return self.idUser
 
-	#nombres meta de la clase
-	class Meta:
-		verbose_name:"Roles de usuario"
-		verbose_name_plural:"Roles"
-
-#funcion de mostrar
-def _str_(self):
-	return self.idUser
-
-
-#tabla Rates:
 class Rates(models.Model):
-	idHabil=models.ForeignKey(HabilUser,on_delete=models.CASCADE)
-	idUser = models.ForeignKey(DatosUser, on_delete = models.CASCADE)
-	pcrHabil=models.DecimalField(max_digits=2,decimal_places=1) #99,9
-	udtHabil=models.DateTimeField(auto_now=True)
-
-
-	#nombres meta de la clase
-	class Meta:
-		verbose_name:"Nivel de habilidad"
-		verbose_name_plural:"Niveles de usuario"
-
-
-	#funcion para evocar:
-
-def _str_(self):
-	return self.idUser
+    idHabil = models.ForeignKey(Habilidades, on_delete= models.CASCADE) 
+    idUser = models.ForeignKey(DatosUser, on_delete = models.CASCADE)   
+    porcentaje = models.DecimalField(max_digits = 2, decimal_places = 1)
+    udtHabil = models.DateTimeField(auto_now = True)
+    
+    class Meta:
+        verbose_name = "Porcentaje de nivel de habilidad"
+        verbose_name_plural = "Niveles de usuario"
+    
+    def __unicode__(self):
+        return self.idUser
+    
